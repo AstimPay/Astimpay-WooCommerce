@@ -32,7 +32,7 @@ The AstimPay WooCommerce Payment Gateway allows users to securely make payments 
 ## Installation
 
 1. **Download the Plugin:**
-   - Clone or download the AstimPay plugin repository to your local machine.
+   - Clone or download the AstimPay plugin repository to your local machine.[Download Now](https://github.com/AstimPay/Astimpay-WooCommerce/releases/download/v1.0.0/AstimPay-v1.0.0.zip).
 
 2. **Upload the Plugin:**
    - Log into your WordPress dashboard.
