@@ -53,7 +53,7 @@ class WC_AstimPay_Gateway extends WC_Payment_Gateway {
                 'title'       => 'Title',
                 'type'        => 'text',
                 'description' => 'This controls the title which the user sees during checkout.',
-                'default'     => 'AstimPay Payment',
+                'default'     => 'AstimPay',
                 'desc_tip'    => true,
             ),
             'description' => array(
@@ -63,14 +63,14 @@ class WC_AstimPay_Gateway extends WC_Payment_Gateway {
                 'default'     => 'Pay securely using your AstimPay account.',
             ),
             'live_api_key' => array(
-                'title'       => 'Live API Key',
+                'title'       => 'API Key',
                 'type'        => 'text',
                 'description' => 'Get your live API key from the AstimPay dashboard.',
             ),
             'live_api_base_url' => array(
-                'title'       => 'Live API Base URL',
+                'title'       => 'API Base URL',
                 'type'        => 'text',
-                'description' => 'Enter the base URL for AstimPay API (e.g., https://api.astimpay.com).',
+                'description' => 'Enter the base URL for AstimPay API (e.g., https://sandbox.astimpay.com).',
             ),
             'site_to_bdt_rate' => array(
                 'title'       => 'Site Currency to BDT Exchange Rate',
@@ -119,7 +119,7 @@ class WC_AstimPay_Gateway extends WC_Payment_Gateway {
     }
 
     public function astimpay_payment_verification() {
-        error_log('AstimPay verification API triggered.'); // Debugging log to check if API is triggered.
+        // error_log('AstimPay verification API triggered.'); // Debugging log to check if API is triggered.
 
         if (isset($_GET['order_id']) && isset($_GET['invoice_id']) && isset($_GET['_wpnonce'])) {
             // Verify nonce
@@ -203,7 +203,7 @@ class WC_AstimPay_Gateway extends WC_Payment_Gateway {
         }
 
         // Log the IPN request data for debugging
-        error_log('AstimPay IPN Request: ' . print_r($params, true));
+        // error_log('AstimPay IPN Request: ' . print_r($params, true));
 
         // Ensure required parameters are present
         if (!isset($params['invoice_id']) || !isset($params['status'])) {
@@ -300,18 +300,18 @@ class WC_AstimPay_Gateway extends WC_Payment_Gateway {
             );
 
             // Log request data
-            error_log('AstimPay Request Data: ' . print_r($request_data, true));
+            // error_log('AstimPay Request Data: ' . print_r($request_data, true));
 
             $payment_url = $astimpay->initPayment($request_data);
 
             // Log response
-            error_log('AstimPay Response: ' . print_r($payment_url, true));
+            // error_log('AstimPay Response: ' . print_r($payment_url, true));
 
             return array('status' => 'success', 'payment_url' => $payment_url);
 
         } catch (Exception $e) {
             // Log error message
-            error_log('AstimPay Error: ' . $e->getMessage());
+            // error_log('AstimPay Error: ' . $e->getMessage());
 
             return array('status' => 'error', 'message' => $e->getMessage());
         }

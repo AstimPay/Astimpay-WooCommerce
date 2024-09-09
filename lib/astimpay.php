@@ -45,7 +45,7 @@ class AstimPay
 	    $response = $this->sendRequest('POST', $verifyUrl, $requestData);
 	
 	    // Log the response for debugging
-	    error_log('AstimPay Verification Response: ' . print_r($response, true));
+	    // error_log('AstimPay Verification Response: ' . print_r($response, true));
 	
 	    if (isset($response['status']) && in_array($response['status'], ['Completed', 'Pending'])) {
 	        return $response['status']; // Return 'Completed' or 'Pending'
